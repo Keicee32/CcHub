@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 30%;
+            border: 10px solid seashell;
+            margin: 70px auto;
+            display: flex;
+            flex-direction: column;
+            height: 50%;
+        }
+
+        form input[type="text"]{
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-bottom: 1px solid #333;
+        }
+
+        form label{
+            color: seagreen;
+            font-size: 20px;
+            padding-left: 9px;
+            padding-top: 10px;
+        }
+
+        form button{
+            background-color:snow;
+            width: 200px;
+            margin: 9px auto;
+            padding: 5px;
+            color: seagreen;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="get" onsubmit="return false">
+        <label for="">Input</label>
+        <input type="text" name="input" id="inputs1">
+        <label for="">Operator</label>
+        <input type="text" name="operator" id="operators">
+        <label for="">Input</label>
+        <input type="text" name="input" id="inputs2">
+        <label for="result">Result</label>
+        <input type="text" name="" id="results">
+        <button onclick="getResult()">Calculate</button>
+    </form>
+
+    <script>
+        function getResult() { 
+            let operator = (document.getElementById("operators").value);
+            let input1 = parseInt(document.getElementById("inputs1").value);
+            let input2 = parseInt(document.getElementById("inputs2").value);
+            let result, x;
+
+            if(input1 == "" || input2 == "" || operator == ""){
+                alert("Your input field is empty");
+            }
+
+            if(isNaN(input1) || isNaN(input2)){
+                alert("Use numbers only");
+            }
+
+            if(operator.length > 1){
+                alert("You should use just one operator here");
+            }
+            
+            switch(operator) {
+                case "+":
+                    result = input1 + input2;
+                    // x = document.write("The result of this is: " + result);
+                    document.getElementById("results").value = result;
+                    break;
+                case "-":
+                    result = input1 - input2;
+                    document.getElementById("results").value = result;
+                    break;
+                case "*":
+                    result = input1 * input2;
+                    document.getElementById("results").value = result;
+                    break;
+                case "/":
+                    result = input1 / input2;
+                    document.getElementById("results").value = result;
+                    break;
+                case "%":
+                    result = input1 % input2;
+                    document.getElementById("results").value = result;
+                    break;
+                default:
+            }
+        }
+    </script>
+</body>
+</html>
